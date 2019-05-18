@@ -13,7 +13,6 @@ $(function () {
         let toDelete = this.getAttribute('data-id');
         delete amenDict[toDelete];
         amenStr = Object.values(amenDict).join(', ');
-        console.log(amenDict);
         $('.amenities h4').empty();
         $('.amenities h4').append(amenStr);
     };
