@@ -1,16 +1,20 @@
 $(function () {
+  let amenDict = {}
+  let amenKeys = Object.keys(amenDict)
   $('input').on('click', function () {
-    let list = []
+    let amenStr = "";
     if (this.checked) {
-        list.push(this.getAttribute('data-name'));
-        console.log(list)
-        $('amenities h4').text("");
-        $.each(list, function (index, element) {
-            if (index !=0) {
-                $('.amenities h4').append(", ");
-            }
-            $('.amenities h4').append(element);
-    });
-  }
+        amenDict[(this.getAttribute('data-id'))] = (this.getAttribute('data-name'));
+        amenStr = Object.values(amenDict).join(', ');
+        $('.amenities h4').empty();
+        $('.amenities h4').append(amenStr);
+    }
+    if (!(this.checked)) {
+        let toDelete = this.getAttribute('data-id');
+        delete amenDict[toDelete];
+        amenStr = Object.values(amenDict).join(', ');
+        $('.amenities h4').empty();
+        $('.amenities h4').append(amenStr);
+    };
   });
 });
