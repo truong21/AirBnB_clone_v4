@@ -30,11 +30,8 @@ $(function () {
     contentType: 'application/json',
     data: '{}',
     success: function (data) {
-      console.log(data);
       data.sort(function (a, b) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
       });
       $.each(data, function (index, place) {
         $('section.places').append(
