@@ -26,7 +26,7 @@ $(function () {
       $('DIV#api_status').toggleClass('available');
     }
   });
-  function postData(amenFilter) {
+  function postData (amenFilter) {
     const Url = 'http://0.0.0.0:5001/api/v1/places_search';
     $.ajax({
       method: 'POST',
@@ -73,7 +73,7 @@ $(function () {
     });
   }
 
-    postData({});
+  postData({});
 
   $('button').click(function () {
     let toFilter = {};
