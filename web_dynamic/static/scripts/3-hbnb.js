@@ -39,7 +39,7 @@ $(function () {
                           '<div class="title">' +
                           '<h2>' + place.name + '</h2>' +
                           '<div class="price_by_night">' +
-                          place.price_by_night +
+                          '$' + place.price_by_night +
                           '</div>' +
                           '</div>' +
                           '<div class="information">' +
