@@ -19,23 +19,20 @@ $(function () {
       $('.amenities h4').append(amenStr);
     }
   });
-  $.get('http://55.55.55.5:5001/api/v1/status/', function (data, status) {
+  $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
     if (data.status === 'OK') {
       $('DIV#api_status').addClass('available');
     } else {
       $('DIV#api_status').toggleClass('available');
     }
   });
-  $('button').click(function () {
-    let toFilter = {};
-    let key = 'amenities';
-    toFilter[key] = amenKeys;
-    const Url = 'http://55.55.55.5:5001/api/v1/places_search';
+  function postData (amenFilter) {
+    const Url = 'http://0.0.0.0:5001/api/v1/places_search';
     $.ajax({
       method: 'POST',
       url: Url,
       contentType: 'application/json',
-      data: JSON.stringify(toFilter)
+      data: JSON.stringify(amenFilter)
     }).done(function (data) {
       data.sort(function (a, b) {
         return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
@@ -74,5 +71,14 @@ $(function () {
         );
       });
     });
+  }
+
+  postData({});
+
+  $('button').click(function () {
+    let toFilter = {};
+    let key = 'amenities';
+    toFilter[key] = amenKeys;
+    postData(toFilter);
   });
 });
