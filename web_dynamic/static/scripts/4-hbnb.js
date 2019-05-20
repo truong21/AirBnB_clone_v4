@@ -6,6 +6,7 @@ $(function () {
     if (this.checked) {
       amenDict[(this.getAttribute('data-id'))] = (this.getAttribute('data-name'));
       amenStr = Object.values(amenDict).join(', ');
+      amenKeys = Object.keys(amenDict);
       $('.amenities h4').empty();
       $('.amenities h4').append(amenStr);
     }
@@ -13,6 +14,7 @@ $(function () {
       let toDelete = this.getAttribute('data-id');
       delete amenDict[toDelete];
       amenStr = Object.values(amenDict).join(', ');
+      amenKeys = Object.keys(amenDict);
       $('.amenities h4').empty();
       $('.amenities h4').append(amenStr);
     }
